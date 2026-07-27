@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-login">
+  <div class="login-bg"></div>
+  <div class="login-card">
+    <div class="login-head">
+      <div class="login-logo display">BA</div>
+      <div class="login-title display">BioAttend</div>
+      <div class="login-sub">University Biometric Attendance Platform</div>
+    </div>
+
+    <div class="login-body card scanline">
+      <div class="form-group">
+        <label class="form-label">Login as</label>
+        <div class="role-select-wrap">
+          <select class="form-control" id="login-role">
+            <option value="student">👤 Student</option>
+            <option value="lecturer">🎓 Lecturer</option>
+            <option value="admin">🛡️ Administrator</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email-input">Email Address</label>
+        <input class="form-control" type="email" id="email-input" placeholder="you@university.ac.ke" value="amara.osei@ku.ac.ke">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="pw-input">Password</label>
+        <div class="input-wrap">
+          <input class="form-control" type="password" id="pw-input" placeholder="••••••••" value="••••••••">
+          <button class="input-eye" onclick="togglePw()">SHOW</button>
+        </div>
+      </div>
+
+      <div class="login-forgot" onclick="showToast('Password reset link sent — check your inbox.', false)">Forgot password?</div>
+
+      <button class="btn btn-primary btn-lg btn-full" onclick="doLogin()">Sign In</button>
+
+      <div class="flex items-center justify-between gap-2 text-xs text-muted" style="margin-top: -6px;">
+        <span>Secure access via WebAuthn + FIDO2</span>
+      </div>
+    </div>
+
+    <div class="auth-switch-link">Don't have an account? <a href="signup.html">Create one</a></div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>

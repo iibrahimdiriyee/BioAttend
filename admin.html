@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Overview · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-admin">
+
+  <div class="topnav">
+    <a href="admin.html" class="topnav-brand"><span class="logo-mark">BA</span>BioAttend</a>
+    <div class="topnav-right">
+      <button class="btn btn-primary btn-sm" onclick="exportCSV()">Export CSV</button>
+      <div class="avatar-wrap">
+        <div class="avatar" data-avatar-trigger onclick="toggleAvatarMenu('avatar-menu-admin')">AD</div>
+        <div class="avatar-menu" id="avatar-menu-admin">
+          <div class="avatar-menu-head">
+            <div class="avatar-menu-name">System Administrator</div>
+            <div class="avatar-menu-role">Admin · Kenyatta University</div>
+          </div>
+          <a class="avatar-menu-item" href="profile.html">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </a>
+          <button class="avatar-menu-item danger" onclick="doLogout()">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-sidebar">
+    <div class="sidebar">
+      <div class="sidebar-section-label">Administration</div>
+      <a class="sidebar-link active" href="admin.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Overview
+      </a>
+      <a class="sidebar-link" href="admin-users.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Users
+      </a>
+      <a class="sidebar-link" href="admin-courses.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Courses
+      </a>
+      <a class="sidebar-link" href="admin-analytics.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Analytics
+      </a>
+      <a class="sidebar-link" href="admin-audit.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Audit Log
+      </a>
+      <a class="sidebar-link" href="admin-settings.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+      <div class="divider"></div>
+      <button class="sidebar-link" onclick="doLogout()">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+
+    <div class="main-content">
+      <div class="section-header">
+        <div>
+          <div class="section-title display" style="font-size:1.25rem;">System Overview</div>
+          <div class="text-sm text-muted" style="margin-top:2px;">Kenyatta University — Semester 1, 2026</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="badge badge-green badge-dot pulse">System Nominal</span>
+          <span class="chip font-mono">API v2.4.1</span>
+        </div>
+      </div>
+
+      <div class="stat-grid mb-6">
+        <div class="stat-card">
+          <div class="stat-label">Total Students</div>
+          <div class="stat-value">2,847</div>
+          <div class="stat-sub up">↑ 4.2% this semester</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Lecturers</div>
+          <div class="stat-value">68</div>
+          <div class="stat-sub">across 12 departments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Sessions Today</div>
+          <div class="stat-value">31</div>
+          <div class="stat-sub">3 currently live</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg Attendance</div>
+          <div class="stat-value">78%</div>
+          <div class="stat-sub down">↓ 2.1% vs last week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Biometric Auths</div>
+          <div class="stat-value">1.2K</div>
+          <div class="stat-sub">today, 0 failures</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Anomalies Flagged</div>
+          <div class="stat-value text-red">3</div>
+          <div class="stat-sub">proxy attempts blocked</div>
+        </div>
+      </div>
+
+      <div class="admin-charts">
+        <div class="mini-chart">
+          <div class="mini-chart-label">Weekly Attendance</div>
+          <div class="mini-chart-value">78%</div>
+          <div class="mini-chart-bars">
+            <div class="mini-bar" style="height:55%;"></div>
+            <div class="mini-bar" style="height:70%;"></div>
+            <div class="mini-bar active" style="height:88%;"></div>
+            <div class="mini-bar" style="height:64%;"></div>
+            <div class="mini-bar active" style="height:92%;"></div>
+            <div class="mini-bar" style="height:60%;"></div>
+            <div class="mini-bar" style="height:78%;"></div>
+          </div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-chart-label">Auth Success Rate</div>
+          <div class="mini-chart-value">99.7%</div>
+          <div class="mini-chart-bars">
+            <div class="mini-bar active" style="height:95%;"></div>
+            <div class="mini-bar active" style="height:98%;"></div>
+            <div class="mini-bar active" style="height:97%;"></div>
+            <div class="mini-bar active" style="height:100%;"></div>
+            <div class="mini-bar active" style="height:99%;"></div>
+          </div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-chart-label">Anomaly Flags</div>
+          <div class="mini-chart-value text-red">3</div>
+          <div class="mini-chart-bars">
+            <div class="mini-bar" style="height:20%;"></div>
+            <div class="mini-bar" style="height:10%;"></div>
+            <div class="mini-bar active" style="height:45%;"></div>
+            <div class="mini-bar" style="height:15%;"></div>
+            <div class="mini-bar active" style="height:30%;"></div>
+          </div>
+        </div>
+        <div class="mini-chart">
+          <div class="mini-chart-label">Active Sessions</div>
+          <div class="mini-chart-value">3</div>
+          <div class="mini-chart-bars">
+            <div class="mini-bar" style="height:40%;"></div>
+            <div class="mini-bar active" style="height:80%;"></div>
+            <div class="mini-bar active" style="height:65%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title-sm">Attendance Records</div>
+      </div>
+
+      <div class="admin-filter-bar">
+        <select class="form-control">
+          <option>All Departments</option>
+          <option>Computer Science</option>
+          <option>Engineering</option>
+          <option>Business</option>
+        </select>
+        <select class="form-control">
+          <option>This Week</option>
+          <option>This Month</option>
+          <option>This Semester</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" onclick="applyAdminFilters()">Filter</button>
+        <button class="btn btn-primary btn-sm" style="margin-left:auto;" onclick="exportCSV()">Export CSV</button>
+      </div>
+
+      <div class="card table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Course / Unit</th><th>Lecturer</th><th>Date</th><th>Time</th>
+              <th>Enrolled</th><th>Present</th><th>Rate</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CS 403 — Algorithm Design</td><td>Dr. K. Mensah</td><td>2026-06-16</td><td>08:00–10:00</td>
+              <td>47</td><td>36</td><td>77%</td><td><span class="badge badge-green">Complete</span></td>
+            </tr>
+            <tr>
+              <td>CS 301 — Operating Systems</td><td>Dr. A. Njeri</td><td>2026-06-16</td><td>10:00–12:00</td>
+              <td>52</td><td>41</td><td>79%</td><td><span class="badge badge-blue badge-dot pulse">Live</span></td>
+            </tr>
+            <tr>
+              <td>MATH 204 — Linear Algebra</td><td>Prof. B. Omondi</td><td>2026-06-13</td><td>14:00–16:00</td>
+              <td>89</td><td>55</td><td>62%</td><td><span class="badge badge-green">Complete</span></td>
+            </tr>
+            <tr>
+              <td>CS 302 — Database Systems</td><td>Dr. K. Mensah</td><td>2026-06-11</td><td>08:00–10:00</td>
+              <td>47</td><td>40</td><td>85%</td><td><span class="badge badge-green">Complete</span></td>
+            </tr>
+            <tr>
+              <td>ENG 201 — Engineering Maths</td><td>Prof. C. Waweru</td><td>2026-06-11</td><td>12:00–14:00</td>
+              <td>121</td><td>88</td><td>73%</td><td><span class="badge badge-green">Complete</span></td>
+            </tr>
+            <tr>
+              <td>BUS 310 — Strategic Management</td><td>Dr. L. Mutua</td><td>2026-06-10</td><td>09:00–11:00</td>
+              <td>76</td><td>30</td><td>39%</td><td><span class="badge badge-red">Flagged</span></td>
+            </tr>
+            <tr>
+              <td>CS 401 — AI &amp; Machine Learning</td><td>Dr. S. Otieno</td><td>2026-06-10</td><td>14:00–16:00</td>
+              <td>39</td><td>35</td><td>90%</td><td><span class="badge badge-green">Complete</span></td>
+            </tr>
+            <tr>
+              <td>PHY 101 — Physics for Engineers</td><td>Prof. M. Kariuki</td><td>2026-06-09</td><td>08:00–10:00</td>
+              <td>143</td><td>110</td><td>77%</td><td><span class="badge badge-green">Complete</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="text-xs text-muted mt-2" style="margin-top:12px; text-align:center;">Showing 8 of 247 records</div>
+
+      <div class="pager">
+        <button class="btn btn-ghost btn-sm" id="pager-prev" onclick="adminGoToPage('prev')" disabled>← Previous</button>
+        <div class="pager-page active" data-page="1" onclick="adminGoToPage(1)">1</div>
+        <div class="pager-page" data-page="2" onclick="adminGoToPage(2)">2</div>
+        <div class="pager-page" data-page="3" onclick="adminGoToPage(3)">3</div>
+        <button class="btn btn-ghost btn-sm" id="pager-next" onclick="adminGoToPage('next')">Next →</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>

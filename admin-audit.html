@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Log · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-admin-audit">
+
+  <div class="topnav">
+    <a href="admin.html" class="topnav-brand"><span class="logo-mark">BA</span>BioAttend</a>
+    <div class="topnav-right">
+      <div class="avatar-wrap">
+        <div class="avatar" data-avatar-trigger onclick="toggleAvatarMenu('avatar-menu')">AD</div>
+        <div class="avatar-menu" id="avatar-menu">
+          <div class="avatar-menu-head">
+            <div class="avatar-menu-name">System Administrator</div>
+            <div class="avatar-menu-role">Admin · Kenyatta University</div>
+          </div>
+          <a class="avatar-menu-item" href="profile.html">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </a>
+          <button class="avatar-menu-item danger" onclick="doLogout()">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-sidebar">
+    <div class="sidebar">
+      <div class="sidebar-section-label">Administration</div>
+      <a class="sidebar-link" href="admin.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Overview
+      </a>
+      <a class="sidebar-link" href="admin-users.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Users
+      </a>
+      <a class="sidebar-link" href="admin-courses.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Courses
+      </a>
+      <a class="sidebar-link" href="admin-analytics.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Analytics
+      </a>
+      <a class="sidebar-link active" href="admin-audit.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Audit Log
+      </a>
+      <a class="sidebar-link" href="admin-settings.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+      <div class="divider"></div>
+      <button class="sidebar-link" onclick="doLogout()">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+
+    <div class="main-content">
+      <div class="section-header">
+        <div class="section-title display" style="font-size:1.25rem;">Audit Log</div>
+        <button class="btn btn-ghost btn-sm" onclick="exportCSV()">Export Log</button>
+      </div>
+      <div class="page-intro">A tamper-evident record of security-relevant events: sign-ins, session changes, and flagged anomalies.</div>
+
+      <div class="card table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Timestamp</th><th>Actor</th><th>Event</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="font-mono">2026-06-16 09:14:53</td><td>Amara Osei</td><td><span class="badge badge-green">Attendance Marked</span></td><td>CS 403 · geofence + biometric OK</td></tr>
+            <tr><td class="font-mono">2026-06-16 09:01:12</td><td>Dr. K. Mensah</td><td><span class="badge badge-blue">Session Launched</span></td><td>CS 403 · code ATT-8X3K</td></tr>
+            <tr><td class="font-mono">2026-06-16 08:52:07</td><td>Unknown device</td><td><span class="badge badge-red">Anomaly Flagged</span></td><td>GPS mismatch, IP outside campus range — blocked</td></tr>
+            <tr><td class="font-mono">2026-06-16 08:41:55</td><td>Dr. L. Mutua</td><td><span class="badge badge-amber">Session Flagged</span></td><td>BUS 310 · attendance rate below 40% threshold</td></tr>
+            <tr><td class="font-mono">2026-06-15 21:03:44</td><td>System Administrator</td><td><span class="badge badge-blue">User Suspended</span></td><td>Account l.mutua@ku.ac.ke placed under review</td></tr>
+            <tr><td class="font-mono">2026-06-15 14:22:10</td><td>Baraka Tahir</td><td><span class="badge badge-red">Auth Failed</span></td><td>3 failed biometric attempts, device locked 5 min</td></tr>
+            <tr><td class="font-mono">2026-06-15 08:00:03</td><td>Dr. A. Njeri</td><td><span class="badge badge-blue">Session Launched</span></td><td>CS 301 · code ATT-3F9P</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-admin-settings">
+
+  <div class="topnav">
+    <a href="admin.html" class="topnav-brand"><span class="logo-mark">BA</span>BioAttend</a>
+    <div class="topnav-right">
+      <div class="avatar-wrap">
+        <div class="avatar" data-avatar-trigger onclick="toggleAvatarMenu('avatar-menu')">AD</div>
+        <div class="avatar-menu" id="avatar-menu">
+          <div class="avatar-menu-head">
+            <div class="avatar-menu-name">System Administrator</div>
+            <div class="avatar-menu-role">Admin · Kenyatta University</div>
+          </div>
+          <a class="avatar-menu-item" href="profile.html">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </a>
+          <button class="avatar-menu-item danger" onclick="doLogout()">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-sidebar">
+    <div class="sidebar">
+      <div class="sidebar-section-label">Administration</div>
+      <a class="sidebar-link" href="admin.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Overview
+      </a>
+      <a class="sidebar-link" href="admin-users.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Users
+      </a>
+      <a class="sidebar-link" href="admin-courses.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Courses
+      </a>
+      <a class="sidebar-link" href="admin-analytics.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Analytics
+      </a>
+      <a class="sidebar-link" href="admin-audit.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Audit Log
+      </a>
+      <a class="sidebar-link active" href="admin-settings.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+      <div class="divider"></div>
+      <button class="sidebar-link" onclick="doLogout()">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+
+    <div class="main-content" style="max-width: 720px;">
+      <div class="section-header">
+        <div class="section-title display" style="font-size:1.25rem;">Settings</div>
+      </div>
+      <div class="page-intro">Platform-wide configuration for geofencing, session defaults, and security policy.</div>
+
+      <div class="card mb-4" style="padding:22px;">
+        <div class="section-title-sm mb-4">Geofencing Defaults</div>
+        <div class="form-group mb-3">
+          <label class="form-label">Default Geofence Radius</label>
+          <select class="form-control">
+            <option>50 metres</option>
+            <option selected>100 metres</option>
+            <option>200 metres</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label">Require IP verification</div>
+            <div class="settings-row-sub">Cross-check campus subnet in addition to GPS</div>
+          </div>
+          <label class="switch"><input type="checkbox" checked onchange="onSettingsToggle(this, 'IP verification')"><span class="switch-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label">Block VPN / proxy traffic</div>
+            <div class="settings-row-sub">Reject check-ins from known VPN exit nodes</div>
+          </div>
+          <label class="switch"><input type="checkbox" checked onchange="onSettingsToggle(this, 'VPN blocking')"><span class="switch-track"></span></label>
+        </div>
+      </div>
+
+      <div class="card mb-4" style="padding:22px; margin-top:16px;">
+        <div class="section-title-sm mb-4">Security Policy</div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label">Require WebAuthn re-enrollment</div>
+            <div class="settings-row-sub">Force credential re-registration every semester</div>
+          </div>
+          <label class="switch"><input type="checkbox" onchange="onSettingsToggle(this, 'WebAuthn re-enrollment')"><span class="switch-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label">Auto-flag low attendance</div>
+            <div class="settings-row-sub">Flag sessions that fall under 40% marked present</div>
+          </div>
+          <label class="switch"><input type="checkbox" checked onchange="onSettingsToggle(this, 'Auto-flag low attendance')"><span class="switch-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label">Email anomaly alerts</div>
+            <div class="settings-row-sub">Notify the IT Systems Office of blocked proxy attempts</div>
+          </div>
+          <label class="switch"><input type="checkbox" checked onchange="onSettingsToggle(this, 'Anomaly email alerts')"><span class="switch-track"></span></label>
+        </div>
+      </div>
+
+      <div class="card" style="padding:22px; margin-bottom: 28px;">
+        <div class="section-title-sm mb-4">Danger Zone</div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label">Purge attendance data older than 3 years</div>
+            <div class="settings-row-sub">Cannot be undone once confirmed</div>
+          </div>
+          <button class="btn btn-ghost btn-sm text-red" onclick="showToast('Data retention purge scheduled for next maintenance window.', true)">Run Purge</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>

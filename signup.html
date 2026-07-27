@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-signup">
+  <div class="login-bg"></div>
+  <div class="login-card" style="max-width: 440px;">
+    <div class="login-head">
+      <div class="login-logo display">BA</div>
+      <div class="login-title display">Create Account</div>
+      <div class="login-sub">Register your institutional profile to get started</div>
+    </div>
+
+    <div class="login-body card scanline">
+      <div class="form-group">
+        <label class="form-label">I am a</label>
+        <div class="role-pick-grid">
+          <button class="role-pick selected" onclick="pickSignupRole('student', this)"><span class="emoji">👤</span>Student</button>
+          <button class="role-pick" onclick="pickSignupRole('lecturer', this)"><span class="emoji">🎓</span>Lecturer</button>
+          <button class="role-pick" onclick="pickSignupRole('admin', this)"><span class="emoji">🛡️</span>Admin</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="su-name">Full Name</label>
+        <input class="form-control" type="text" id="su-name" placeholder="e.g. Amara Osei">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="su-email">Institutional Email</label>
+        <input class="form-control" type="email" id="su-email" placeholder="you@university.ac.ke">
+        <div class="field-hint">Use your official university email — it's how sessions and rosters find you.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="su-password">Password</label>
+        <div class="input-wrap">
+          <input class="form-control" type="password" id="su-password" placeholder="At least 8 characters" oninput="checkPasswordStrength()">
+          <button class="input-eye" onclick="toggleSignupPw('su-password', this)">SHOW</button>
+        </div>
+        <div class="strength-bar-wrap">
+          <div class="strength-bar"></div>
+          <div class="strength-bar"></div>
+          <div class="strength-bar"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="su-confirm">Confirm Password</label>
+        <div class="input-wrap">
+          <input class="form-control" type="password" id="su-confirm" placeholder="Re-enter password">
+          <button class="input-eye" onclick="toggleSignupPw('su-confirm', this)">SHOW</button>
+        </div>
+      </div>
+
+      <div class="field-error" id="su-error"></div>
+
+      <button class="btn btn-primary btn-lg btn-full" onclick="doSignup()">Create Account</button>
+
+      <div class="text-xs text-muted" style="text-align:center; margin-top: -6px;">
+        You'll register a device biometric (WebAuthn/FIDO2) the first time you sign in.
+      </div>
+    </div>
+
+    <div class="auth-switch-link">Already have an account? <a href="index.html">Sign in</a></div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>

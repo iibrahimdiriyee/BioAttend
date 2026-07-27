@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Control · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-lecturer">
+
+  <div class="topnav">
+    <a href="lecturer.html" class="topnav-brand"><span class="logo-mark">BA</span>BioAttend</a>
+    <div class="topnav-right">
+      <button class="btn btn-ghost btn-sm" onclick="endSession()">End Session</button>
+      <div class="avatar-wrap">
+        <div class="avatar" data-avatar-trigger onclick="toggleAvatarMenu('avatar-menu-lecturer')">KM</div>
+        <div class="avatar-menu" id="avatar-menu-lecturer">
+          <div class="avatar-menu-head">
+            <div class="avatar-menu-name">Dr. Kwame Mensah</div>
+            <div class="avatar-menu-role">Lecturer · Computer Science</div>
+          </div>
+          <a class="avatar-menu-item" href="profile.html">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </a>
+          <button class="avatar-menu-item danger" onclick="doLogout()">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-sidebar">
+    <div class="sidebar">
+      <div class="sidebar-section-label">Lecturer</div>
+      <a class="sidebar-link active" href="lecturer.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+        Sessions
+      </a>
+      <a class="sidebar-link" href="lecturer-classes.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        My Classes
+      </a>
+      <a class="sidebar-link" href="lecturer-schedule.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule
+      </a>
+      <a class="sidebar-link" href="lecturer-reports.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Reports
+      </a>
+      <div class="divider"></div>
+      <button class="sidebar-link" onclick="doLogout()">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+
+    <div class="main-content">
+      <div class="section-header">
+        <div>
+          <div class="section-title display" style="font-size:1.25rem;">Session Control</div>
+          <div class="text-sm text-muted" style="margin-top:2px;">Dr. Kwame Mensah &nbsp;·&nbsp; Department of Computer Science</div>
+        </div>
+        <span class="badge badge-red badge-dot pulse">1 Active Session</span>
+      </div>
+
+      <div class="stat-grid mb-6">
+        <div class="stat-card">
+          <div class="stat-label">Total Enrolled</div>
+          <div class="stat-value">47</div>
+          <div class="stat-sub">CS 403 cohort</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Marked Present</div>
+          <div class="stat-value" id="lec-present-count">6</div>
+          <div class="stat-sub" id="lec-pct">12.8% response</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending</div>
+          <div class="stat-value" id="lec-pending-count">41</div>
+          <div class="stat-sub">awaiting biometric</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Time Remaining</div>
+          <div class="stat-value" id="lec-timer">08:47</div>
+          <div class="stat-sub">session window</div>
+        </div>
+      </div>
+
+      <div class="lecturer-grid">
+        <div class="session-control">
+          <div class="card" style="padding:20px;">
+            <div class="section-title-sm mb-4">Start New Session</div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Course</label>
+              <select class="form-control" id="new-session-course">
+                <option>CS 403 — Algorithm Design &amp; Analysis</option>
+                <option>CS 301 — Operating Systems</option>
+                <option>CS 302 — Database Systems</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Venue</label>
+              <input class="form-control" type="text" value="Engineering Block C, LH 2">
+            </div>
+
+            <div class="time-picker-row mb-3">
+              <div class="form-group">
+                <label class="form-label">Start Time</label>
+                <input class="form-control" type="time" value="08:00">
+              </div>
+              <div class="form-group">
+                <label class="form-label">End Time</label>
+                <input class="form-control" type="time" value="10:00">
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Marking Window</label>
+              <select class="form-control">
+                <option>First 10 minutes</option>
+                <option selected>First 15 minutes</option>
+                <option>First 30 minutes</option>
+                <option>Full lecture</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-4">
+              <label class="form-label">Geofence Radius</label>
+              <select class="form-control">
+                <option>50 metres</option>
+                <option selected>100 metres</option>
+                <option>200 metres</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary btn-full" onclick="launchSession()">Launch Session</button>
+          </div>
+
+          <div class="active-session-card" id="active-session-card">
+            <div class="session-live-header">
+              <span class="text-xs text-muted" style="text-transform:uppercase; letter-spacing:0.06em;">Active Session Code</span>
+              <span class="badge badge-green badge-dot pulse">Window</span>
+            </div>
+            <div class="session-code mono mb-2">ATT-8X3K</div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="session-timer" id="lec-timer-2">08:47</span>
+              <span class="text-xs text-muted">until window closes</span>
+            </div>
+            <div class="text-xs text-secondary">Students mark attendance using their registered device biometric within the geofence.</div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <div class="section-header" style="margin-bottom:14px;">
+            <div class="section-title-sm">Live Attendance Roll</div>
+            <button class="btn btn-ghost btn-sm" onclick="addRollEntry()">Simulate Mark</button>
+          </div>
+
+          <div class="attendance-summary">
+            <div class="summary-chip">
+              <div class="summary-chip-val text-green" id="sc-present">6</div>
+              <div class="summary-chip-label">Present</div>
+            </div>
+            <div class="summary-chip">
+              <div class="summary-chip-val text-red" id="sc-absent">41</div>
+              <div class="summary-chip-label">Absent</div>
+            </div>
+            <div class="summary-chip">
+              <div class="summary-chip-val">47</div>
+              <div class="summary-chip-label">Enrolled</div>
+            </div>
+          </div>
+
+          <div class="student-roll" id="student-roll">
+            <div class="roll-item">
+              <div class="roll-avatar" style="background:#01579B;color:#81D4FA;">AO</div>
+              <div><div class="roll-name">Amara Osei</div><div class="roll-id">CS/4321/2023</div></div>
+              <span class="roll-time">09:01</span>
+              <svg class="roll-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="roll-item">
+              <div class="roll-avatar" style="background:#4A148C;color:#CE93D8;">BT</div>
+              <div><div class="roll-name">Baraka Tahir</div><div class="roll-id">CS/4298/2023</div></div>
+              <span class="roll-time">09:03</span>
+              <svg class="roll-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="roll-item">
+              <div class="roll-avatar" style="background:#004D40;color:#80CBC4;">CN</div>
+              <div><div class="roll-name">Chidinma Nwosu</div><div class="roll-id">CS/4355/2023</div></div>
+              <span class="roll-time">09:05</span>
+              <svg class="roll-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="roll-item">
+              <div class="roll-avatar" style="background:#37474F;color:#B0BEC5;">DM</div>
+              <div><div class="roll-name">Darius Mwangi</div><div class="roll-id">CS/4367/2023</div></div>
+              <span class="roll-time">09:07</span>
+              <svg class="roll-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="roll-item">
+              <div class="roll-avatar" style="background:#1A237E;color:#9FA8DA;">EK</div>
+              <div><div class="roll-name">Esther Kamau</div><div class="roll-id">CS/4312/2023</div></div>
+              <span class="roll-time">09:09</span>
+              <svg class="roll-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="roll-item">
+              <div class="roll-avatar" style="background:#880E4F;color:#F48FB1;">FO</div>
+              <div><div class="roll-name">Fatima Ouattara</div><div class="roll-id">CS/4389/2023</div></div>
+              <span class="roll-time">09:12</span>
+              <svg class="roll-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>

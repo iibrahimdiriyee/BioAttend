@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance History · BioAttend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="page-student-history">
+
+  <div class="topnav">
+    <a href="student.html" class="topnav-brand"><span class="logo-mark">BA</span>BioAttend</a>
+    <div class="topnav-right">
+      <div class="avatar-wrap">
+        <div class="avatar" data-avatar-trigger onclick="toggleAvatarMenu('avatar-menu')">AO</div>
+        <div class="avatar-menu" id="avatar-menu">
+          <div class="avatar-menu-head">
+            <div class="avatar-menu-name">Amara Osei</div>
+            <div class="avatar-menu-role">Student · CS/4321/2023</div>
+          </div>
+          <a class="avatar-menu-item" href="profile.html">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </a>
+          <button class="avatar-menu-item danger" onclick="doLogout()">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-sidebar">
+    <div class="sidebar">
+      <div class="sidebar-section-label">Student</div>
+      <a class="sidebar-link" href="student.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+      </a>
+      <a class="sidebar-link" href="profile.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        My Profile
+      </a>
+      <a class="sidebar-link active" href="student-history.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+        Attendance History
+      </a>
+      <a class="sidebar-link" href="student-courses.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        My Courses
+      </a>
+      <div class="divider"></div>
+      <button class="sidebar-link" onclick="doLogout()">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+
+    <div class="main-content">
+      <div class="section-header">
+        <div class="section-title display" style="font-size:1.25rem;">Attendance History</div>
+      </div>
+      <div class="page-intro">Every session you've been enrolled for this semester, with your verification status for each. Rate is calculated across all recorded sessions.</div>
+
+      <div class="stat-grid mb-6">
+        <div class="stat-card">
+          <div class="stat-label">Sessions Attended</div>
+          <div class="stat-value">34</div>
+          <div class="stat-sub">of 41 total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Attendance Rate</div>
+          <div class="stat-value text-green">82.9%</div>
+          <div class="stat-sub up">↑ 3.1% vs last month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Current Streak</div>
+          <div class="stat-value">6</div>
+          <div class="stat-sub">sessions in a row</div>
+        </div>
+      </div>
+
+      <div class="admin-filter-bar">
+        <select class="form-control">
+          <option>All Courses</option>
+          <option>CS 403 — Algorithm Design</option>
+          <option>CS 301 — Operating Systems</option>
+          <option>MATH 204 — Linear Algebra</option>
+          <option>CS 302 — Database Systems</option>
+        </select>
+        <select class="form-control">
+          <option>This Semester</option>
+          <option>This Month</option>
+          <option>This Week</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" onclick="applyAdminFilters()">Filter</button>
+      </div>
+
+      <div class="card table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Course</th><th>Date</th><th>Time</th><th>Method</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>CS 403 — Algorithm Design</td><td>2026-06-16</td><td>08:00–10:00</td><td>Biometric + GPS</td><td><span class="badge badge-green">Present</span></td></tr>
+            <tr><td>CS 301 — Operating Systems</td><td>2026-06-13</td><td>10:00–12:00</td><td>Biometric + GPS</td><td><span class="badge badge-green">Present</span></td></tr>
+            <tr><td>MATH 204 — Linear Algebra</td><td>2026-06-12</td><td>14:00–16:00</td><td>—</td><td><span class="badge badge-red">Absent</span></td></tr>
+            <tr><td>CS 302 — Database Systems</td><td>2026-06-11</td><td>08:00–10:00</td><td>Biometric + GPS</td><td><span class="badge badge-green">Present</span></td></tr>
+            <tr><td>CS 403 — Algorithm Design</td><td>2026-06-09</td><td>08:00–10:00</td><td>Biometric + GPS</td><td><span class="badge badge-green">Present</span></td></tr>
+            <tr><td>CS 301 — Operating Systems</td><td>2026-06-06</td><td>10:00–12:00</td><td>Biometric only</td><td><span class="badge badge-amber">Flagged</span></td></tr>
+            <tr><td>MATH 204 — Linear Algebra</td><td>2026-06-05</td><td>14:00–16:00</td><td>Biometric + GPS</td><td><span class="badge badge-green">Present</span></td></tr>
+            <tr><td>CS 302 — Database Systems</td><td>2026-06-04</td><td>08:00–10:00</td><td>—</td><td><span class="badge badge-red">Absent</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pager">
+        <button class="btn btn-ghost btn-sm" id="pager-prev" onclick="adminGoToPage('prev')" disabled>← Previous</button>
+        <div class="pager-page active" data-page="1" onclick="adminGoToPage(1)">1</div>
+        <div class="pager-page" data-page="2" onclick="adminGoToPage(2)">2</div>
+        <div class="pager-page" data-page="3" onclick="adminGoToPage(3)">3</div>
+        <button class="btn btn-ghost btn-sm" id="pager-next" onclick="adminGoToPage('next')">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+<script src="main.js"></script>
+</body>
+</html>
